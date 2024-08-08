@@ -19,6 +19,6 @@ Welcome to the Weather App! This application provides current weather informatio
 
 Contributions are welcome! Please open an issue or submit a pull request.
 
-## Contributing
+## Live Preview
 
 - https://shozuu.github.io/weather-app/
