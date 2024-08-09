@@ -3,12 +3,448 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Title</title>
+    <title>SkyCast</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
   <script defer src="main.js"></script></head>
   <body>
-    <div class="test">Hello World</div>
+    <div class="header-group">
+      <div class="header">
+        <div class="logo">
+          <img src="assets/images/logo.a613e47e737be682232a.svg" class="logo-img" />
+          <div class="logo-title">SkyCast</div>
+        </div>
+        <div class="header-subgroup">
+          <form action="#" method="get">
+            <input
+              type="searchbar"
+              name="searchbar"
+              class="searchbar"
+              autocomplete="off"
+              placeholder="Search Location"
+            />
+            <button type="submit">
+              <img src="assets/images/magnifying-glass.d9250abf4cfac12f5b58.svg" />
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="unit-group">
+        <button class="celcius-button">°C, m/s</button>
+        <button class="farenheit-button">°F, mph</button>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="today-group">
+        <div class="title">Today</div>
+        <div class="today-card">
+          <div class="today-temp-group">
+            <div class="today-temp">19°C</div>
+            <img
+              src="assets/images/partly-cloudy-night.4c8c6fc347221cd407cd.svg"
+              alt="partly-cloudy-night"
+              class="today-weather-img"
+            />
+          </div>
+          <div class="today-condition">Partly Cloudy</div>
+          <div class="today-info-group">
+            <div class="info-group">
+              <img src="assets/images/location-pin.ed4698f0bbe316f696b1.svg" alt="Location" />
+              <div class="location">Manila, Philippines</div>
+            </div>
+            <div class="info-group">
+              <img src="assets/images/clock.baeba78e36c2a04ba858.svg" alt="Time" />
+              <div class="current-time">12:30</div>
+            </div>
+            <div class="info-group">
+              <img src="assets/images/calendar.8f223ae1709898f27bfa.svg" alt="Date" />
+              <div class="current-date">Sat, 3 Aug</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="today-condition-group">
+        <div class="title">Today's conditions</div>
+        <div class="today-condition-card">
+          <div class="condition-card">
+            <img src="assets/images/temperature.260122987e41703f7214.svg" alt="feels-like" />
+            <div class="condition-info">
+              <div class="feels-like">32°C</div>
+              <div>Feels Like</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/raindrops.c88b41fad8df9e2cd477.svg" alt="rain-rate" />
+            <div class="condition-info">
+              <div class="rain-rate">12%</div>
+              <div>Feels Like</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/humidity.99a33720bd0c7c1f5c76.svg" alt="humidity" />
+            <div class="condition-info">
+              <div class="humidity">77%</div>
+              <div>Humidity</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/uv.2035de992802428b2881.svg" alt="uv-index" />
+            <div class="condition-info">
+              <div class="uv-index">1</div>
+              <div>UV Index</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/eye.0c364093b68d16b5c996.svg" alt="visibility" />
+            <div class="condition-info">
+              <div class="visibility">10km</div>
+              <div>Visibility</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/pressure.9bce40234785cac1c204.svg" alt="pressure" />
+            <div class="condition-info">
+              <div class="pressure">1010 mBar</div>
+              <div>Pressure</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/sunrise.06b030e2fb49e970fc52.svg" alt="sunrise" />
+            <div class="condition-info">
+              <div class="sunrise">05:45</div>
+              <div>Sunrise</div>
+            </div>
+          </div>
+          <div class="condition-card">
+            <img src="assets/images/sunset.7ff7e92e8ef44cea29d9.svg" alt="sunset" />
+            <div class="condition-info">
+              <div class="sunset">18:09</div>
+              <div>Sunset</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hourly-group">
+        <div class="title">Hourly Forecast</div>
+        <div class="hourly-forecast-card">
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate">20%</div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">14:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">13:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">14:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">15:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">16:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">16:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">17:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+          <div class="hour-card">
+            <div class="hour-temp">19°C</div>
+            <div class="hour-info">
+              <div class="hour-weather">
+                <div class="hour-rain-rate"></div>
+                <img
+                  src="assets/images/clear-day.d862f198fe90128a3a4b.svg"
+                  alt="clear-day"
+                />
+              </div>
+              <div class="hour-time">18:00</div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="daily-group">
+      <div class="title">Daily Forecast</div>
+      <div class="daily-forecast-card">
+        <div class="day-card">
+          <div class="date">Sun, 4 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Mon, 5 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate"></div>
+            <img src="assets/images/clear-day.d862f198fe90128a3a4b.svg" alt="clear-day" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Tue, 6 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Wed, 7 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate"></div>
+            <img src="assets/images/clear-day.d862f198fe90128a3a4b.svg" alt="clear-day" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Thu, 8 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Fri, 9 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Fri, 9 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+        <div class="day-card">
+          <div class="date">Fri, 9 Aug</div>
+          <div class="weather-condition">
+            <div class="day-rain-rate">80%</div>
+            <img src="assets/images/rain.f5e43ed7fe506da685a4.svg" alt="rain" />
+          </div>
+          <div class="day-temp-range">29°C - 32°C</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

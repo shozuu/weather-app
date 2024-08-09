@@ -1,3 +1,13 @@
+:root {
+  --primary-color: #171717;
+  --secondary-color: #212121;
+  --primary-text: #ececec;
+  --secondary-text: #b4b4b4;
+  --small: 12px;
+  --medium: 14px;
+  --large: 18px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,4 +16,273 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  max-width: 1130px;
+  margin: auto;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+form input {
+  font-family: inherit;
+  font-size: var(--medium);
+  background-color: var(--secondary-color);
+  color: var(--secondary-text);
+  padding: 8px 0px 8px 10px;
+  border: 1.5px solid var(--secondary-color);
+  border-right: none;
+  border-radius: 10px 0px 0px 10px;
+  outline: none;
+}
+
+form button {
+  background-color: var(--secondary-color);
+  height: 36px;
+  padding: 8px 10px 8px 0px;
+  border: 1.5px solid var(--secondary-color);
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+}
+
+form button img {
+  width: 18px;
+  height: 18px;
+}
+
+form input:focus {
+  border: 1.5px solid var(--secondary-text);
+  border-right: none;
+}
+
+form input:focus ~ button {
+  border: 1.5px solid var(--secondary-text);
+  border-left: none;
+}
+
+.unit-group {
+  align-self: end;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.celcius-button,
+.farenheit-button {
+  border: 1.5px solid var(--secondary-color);
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  color: var(--primary-text);
+}
+
+.celcius-button:hover,
+.farenheit-button:hover {
+  border: 1.5px solid var(--primary-text);
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  gap: 30px;
+  padding: 20px;
+}
+
+.today-group,
+.daily-group,
+.hourly-group,
+.today-condition-group {
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  color: var(--secondary-text);
+  font-size: var(--medium);
+}
+
+.today-card,
+.daily-forecast-card,
+.hourly-forecast-card,
+.today-condition-card {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.today-temp-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.today-weather-img {
+  width: 64px;
+  height: 64px;
+}
+
+.today-condition {
+  border-bottom: 1px solid var(--secondary-text);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.today-info-group {
+  display: grid;
+  gap: 10px;
+}
+
+.info-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: var(--medium);
+}
+
+.daily-forecast-card {
+  gap: 10px;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.day-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-size: var(--small);
+}
+
+.weather-condition {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.day-rain-rate {
+  position: absolute;
+  right: 25px;
+  color: #69aaf5;
+}
+
+.day-temp-range {
+  justify-self: end;
+}
+
+.hourly-forecast-card {
+  flex-direction: row;
+  gap: 30px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hourly-forecast-card::-webkit-scrollbar,
+.daily-forecast-card::-webkit-scrollbar {
+  display: none; /* chrome and safari */
+}
+
+.hour-card {
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+  font-size: var(--small);
+}
+
+.hour-temp {
+  font-size: var(--medium);
+}
+
+.hour-info {
+  display: grid;
+  gap: 10px;
+}
+
+.hour-weather {
+  display: grid;
+  justify-items: center;
+  position: relative;
+}
+
+.hour-rain-rate {
+  position: absolute;
+  bottom: 25px;
+  color: #69aaf5;
+}
+
+.hour-time {
+  color: var(--secondary-text);
+}
+
+.today-condition-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.condition-card {
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: var(--small);
+}
+
+/* should i include css, html, assets folder in the src? */
+
+@media only screen and (max-width: 509px) {
+  .header {
+    justify-content: center;
+  }
+  .unit-group {
+    align-self: center;
+  }
 }
