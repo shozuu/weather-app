@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
-import { getHourlyData, getDailyData, computeRainRate } from './helper';
+import {
+  getHourlyData,
+  getDailyData,
+  computeRainRate,
+  formatTime,
+  getToday,
+} from './helper';
 
 function segregateData(data) {
   console.log(data);
@@ -10,8 +16,8 @@ function segregateData(data) {
       currentCondIcon: data.currentConditions.icon,
       currentCond: data.currentConditions.conditions,
       currentLocation: data.resolvedAddress,
-      currentTime: data.currentConditions.datetime, // format time
-      // currentDate: function call to date function(),
+      currentTime: formatTime(data.currentConditions.datetime),
+      currentDate: getToday(),
     },
     todayCondition: {
       feelsLike: data.currentConditions.feelslike,
@@ -23,8 +29,8 @@ function segregateData(data) {
       uvIndex: data.currentConditions.uvindex,
       visibility: data.currentConditions.visibility,
       pressure: data.currentConditions.pressure,
-      sunrise: data.currentConditions.sunrise,
-      sunset: data.currentConditions.sunset,
+      sunrise: formatTime(data.currentConditions.sunrise),
+      sunset: formatTime(data.currentConditions.sunset),
     },
     hourlyForecast: getHourlyData(data),
     dailyForecast: getDailyData(data),
