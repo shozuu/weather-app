@@ -71,7 +71,6 @@ form input {
 
 form button {
   background-color: var(--secondary-color);
-  height: 36px;
   padding: 8px 10px 8px 0px;
   border: 1.5px solid var(--secondary-color);
   border-left: none;
