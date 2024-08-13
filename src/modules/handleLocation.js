@@ -11,8 +11,10 @@ function setURL(location) {
 function getLocation() {
   const form = document.querySelector('form');
   const searchbar = document.querySelector('.searchbar');
+  let flag = false;
 
   form.addEventListener('submit', (e) => {
+    flag = true;
     e.preventDefault();
 
     const arr = searchbar.value.split(' ');
@@ -20,6 +22,8 @@ function getLocation() {
 
     setURL(location);
   });
+
+  if (!flag) setURL('tokyo japan');
 }
 
 export { setURL, getLocation };
