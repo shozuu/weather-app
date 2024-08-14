@@ -39,14 +39,14 @@ function createTodayGroup() {
 
   const todayTempGroup = createElement('div', ['today-temp-group']);
   const todayTemp = createElement('div', ['today-temp'], {
-    textContent: '19°C',
+    textContent: `${weatherData.todayInfo.currentTemp}°C`,
   });
   const todayWeatherImg = createElement('img', ['today-weather-img'], {
     src: '',
     alt: 'partly-cloudy-night',
   });
   const todayCondition = createElement('div', ['today-condition'], {
-    textContent: 'Partly Cloudy',
+    textContent: weatherData.todayInfo.currentCond,
   });
 
   const todayInfoGroup = createElement('div', ['today-info-group']);
@@ -54,19 +54,19 @@ function createTodayGroup() {
   const infoGroup1 = createElement('div', ['info-group']);
   const locationImg = createElement('img', [], { src: '', alt: 'Location' });
   const location = createElement('div', ['location'], {
-    textContent: 'Manila, Philippines',
+    textContent: weatherData.todayInfo.currentLocation,
   });
 
   const infoGroup2 = createElement('div', ['info-group']);
   const timeImg = createElement('img', [], { src: '', alt: 'Time' });
   const currentTime = createElement('div', ['current-time'], {
-    textContent: '12:30',
+    textContent: weatherData.todayInfo.currentTime,
   });
 
   const infoGroup3 = createElement('div', ['info-group']);
   const dateImg = createElement('img', [], { src: '', alt: 'Date' });
   const currentDate = createElement('div', ['current-date'], {
-    textContent: 'Sat, 3 Aug',
+    textContent: weatherData.todayInfo.currentDate,
   });
 
   appendElement(infoGroup1, [locationImg, location]);
@@ -99,7 +99,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo1 = createElement('div', ['condition-info']);
   const feelsLike = createElement('div', ['feels-like'], {
-    textContent: '32°C',
+    textContent: `${weatherData.todayCondition.feelsLike}°C`,
   });
   const temp1 = createElement('div', [], {
     textContent: 'Feels Like',
@@ -112,7 +112,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo2 = createElement('div', ['condition-info']);
   const rainRate = createElement('div', ['rain-rate'], {
-    textContent: '12 %',
+    textContent: weatherData.todayCondition.rainRate,
   });
   const temp2 = createElement('div', [], { textContent: 'Rain Rate' });
 
@@ -123,7 +123,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo3 = createElement('div', ['condition-info']);
   const humidity = createElement('div', ['humidity'], {
-    textContent: '77 %',
+    textContent: `${weatherData.todayCondition.humidity} %`,
   });
   const temp3 = createElement('div', [], {
     textContent: 'Humidity',
@@ -136,7 +136,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo4 = createElement('div', ['condition-info']);
   const uvIndex = createElement('div', ['uv-index'], {
-    textContent: '1',
+    textContent: weatherData.todayCondition.uvIndex,
   });
   const temp4 = createElement('div', [], {
     textContent: 'UV Index',
@@ -149,7 +149,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo5 = createElement('div', ['condition-info']);
   const visibility = createElement('div', ['visibility'], {
-    textContent: '10 km',
+    textContent: `${weatherData.todayCondition.visibility} km`,
   });
   const temp5 = createElement('div', [], {
     textContent: 'Visibility',
@@ -162,7 +162,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo6 = createElement('div', ['condition-info']);
   const pressure = createElement('div', ['pressure'], {
-    textContent: '1010 mbar',
+    textContent: `${weatherData.todayCondition.pressure} mBar`,
   });
   const temp6 = createElement('div', [], {
     textContent: 'Pressure',
@@ -175,7 +175,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo7 = createElement('div', ['condition-info']);
   const sunrise = createElement('div', ['sunrise'], {
-    textContent: '05:45',
+    textContent: weatherData.todayCondition.sunrise,
   });
   const temp7 = createElement('div', [], {
     textContent: 'Sunrise',
@@ -188,7 +188,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo8 = createElement('div', ['condition-info']);
   const sunset = createElement('div', ['sunset'], {
-    textContent: '18:09',
+    textContent: weatherData.todayCondition.sunset,
   });
   const temp8 = createElement('div', [], {
     textContent: 'Sunset',
@@ -227,41 +227,93 @@ function createTodayConditionGroup() {
   appendElement(mainContainer, [todayConditionGroup]);
 }
 
-// function createForecastCardItems() {
-//   console.log(getData());
-// }
+function createHourlyForecastCardItems() {
+  const hourlyForecastCard = createElement('div', ['hourly-forecast-card']);
 
-// function createHourlyGroup() {
-//   const mainContainer = document.querySelector('.main-container');
+  for (let i = 0; i < weatherData.hourlyForecast.length; i += 1) {
+    const hourCard = createElement('div', ['hour-card']);
+    const hourTemp = createElement('div', ['hour-temp'], {
+      textContent: weatherData.hourlyForecast[i].temp,
+    });
+    const hourInfo = createElement('div', ['hour-info']);
+    const hourWeather = createElement('div', ['hour-weather']);
+    const hourRainRate = createElement('div', ['hour-rain-rate'], {
+      textContent: weatherData.hourlyForecast[i].rainRate,
+    });
+    const hourWeatherImg = createElement('img', [], { src: '', alt: '' });
+    const hourTime = createElement('div', ['hour-time'], {
+      textContent: weatherData.hourlyForecast[i].hour,
+    });
 
-//   const hourlyGroup = createElement('section', ['hourly-group']);
-//   const title = createElement('div', ['title'], {
-//     textContent: 'Hourly Forecast',
-//   });
-//   const hourlyForecastCard = createElement('div', ['hourly-forecast-card']);
+    appendElement(hourWeather, [hourRainRate, hourWeatherImg]);
+    appendElement(hourInfo, [hourWeather, hourTime]);
+    appendElement(hourCard, [hourTemp, hourInfo]);
+    appendElement(hourlyForecastCard, [hourCard]);
+  }
 
-//   // const hourCard = createElement('div', ['hour-card']);
-//   // const hourTemp = createElement('div', ['hour-temp'], { textContent: '19°C' });
-//   // const hourInfo = createElement('div', ['hour-info']);
-//   // const hourWeather = createElement('div', ['hour-weather']);
-//   // const hourRainRate = createElement('div', ['hour-rain-rate'], {
-//   //   textContent: '',
-//   // });
-//   // const hourWeatherImg = createElement('img', [], { src: '', alt: '' });
-//   // const hourTime = createElement('div', ['hour-time'], {
-//   //   textContent: '13:00',
-//   // });
+  return hourlyForecastCard;
+}
 
-//   // appendElement(hourWeather, [hourRainRate, hourWeatherImg]);
-//   // appendElement(hourInfo, [hourWeather, hourTime]);
-//   // appendElement(hourCard, [hourTemp, hourInfo]);
+function createHourlyGroup() {
+  const mainContainer = document.querySelector('.main-container');
 
-//   // // create a function to loop
+  const hourlyGroup = createElement('section', ['hourly-group']);
+  const title = createElement('div', ['title'], {
+    textContent: 'Hourly Forecast',
+  });
+  const hourlyForecastCard = createHourlyForecastCardItems();
 
-//   createForecastCardItems();
-// }
+  appendElement(hourlyGroup, [title, hourlyForecastCard]);
+  appendElement(mainContainer, [hourlyGroup]);
+}
+
+function createDailyForecastCardItems() {
+  const dailyForecastCard = createElement('div', ['daily-forecast-card']);
+
+  for (let i = 0; i < weatherData.dailyForecast.length; i += 1) {
+    const dayCard = createElement('div', ['day-card']);
+    const date = createElement('div', ['date'], {
+      textContent: weatherData.dailyForecast[i].date,
+    });
+    const weatherCondition = createElement('div', ['weather-condition']);
+    const dayRainRate = createElement('div', ['day-rain-rate'], {
+      textContent: weatherData.dailyForecast[i].rainRate,
+    });
+    const dayWeatherImg = createElement('img', [], {
+      src: '',
+      alt: '',
+    });
+    const tempRange = createElement('div', ['day-temp-range'], {
+      textContent: `${weatherData.dailyForecast[i].minTemp}°C - ${weatherData.dailyForecast[i].maxTemp}°C`,
+    });
+
+    appendElement(weatherCondition, [dayRainRate, dayWeatherImg]);
+    appendElement(dayCard, [date, weatherCondition, tempRange]);
+    appendElement(dailyForecastCard, [dayCard]);
+  }
+
+  return dailyForecastCard;
+}
+
+function createDailyForecastGroup() {
+  const mainContainer = document.querySelector('.main-container');
+
+  const dailyGroup = createElement('section', ['hourly-group']);
+  const title = createElement('div', ['title'], {
+    textContent: 'Daily Forecast',
+  });
+  const dailyForecastCard = createDailyForecastCardItems();
+
+  appendElement(dailyGroup, [title, dailyForecastCard]);
+  appendElement(mainContainer, [dailyGroup]);
+}
 
 export default function setPageFlow() {
+  const mainContainer = document.querySelector('.main-container');
+  mainContainer.innerHTML = '';
+
   createTodayGroup();
   createTodayConditionGroup();
+  createHourlyGroup();
+  createDailyForecastGroup();
 }
