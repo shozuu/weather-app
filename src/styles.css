@@ -139,7 +139,6 @@ form input:focus ~ button {
 
 .today-card,
 .daily-forecast-card,
-.hourly-forecast-card,
 .today-condition-card {
   background-color: var(--secondary-color);
   border-radius: 10px;
@@ -205,8 +204,9 @@ form input:focus ~ button {
 
 .day-rain-rate {
   position: absolute;
-  right: 25px;
+  right: 30px;
   color: #69aaf5;
+  text-wrap: nowrap;
 }
 
 .day-temp-range {
@@ -214,8 +214,12 @@ form input:focus ~ button {
 }
 
 .hourly-forecast-card {
-  flex-direction: row;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(24, minmax(55px, 1fr));
   gap: 30px;
+  padding: 25px;
   overflow-x: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -229,8 +233,11 @@ form input:focus ~ button {
 .hour-card {
   display: grid;
   justify-items: center;
-  gap: 30px;
+  gap: 40px;
   font-size: var(--small);
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .hour-temp {
@@ -252,6 +259,7 @@ form input:focus ~ button {
   position: absolute;
   bottom: 25px;
   color: #69aaf5;
+  text-wrap: nowrap;
 }
 
 .hour-time {
