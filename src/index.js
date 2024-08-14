@@ -1,4 +1,4 @@
 import './styles.css';
-import { getLocation } from './modules/handleLocation';
+import getLocation from './modules/handleLocation';
 
 getLocation();
