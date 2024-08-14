@@ -217,7 +217,7 @@ form input:focus ~ button {
   background-color: var(--secondary-color);
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(24, minmax(55px, 1fr));
+  grid-template-columns: repeat(24, minmax(60px, 1fr));
   gap: 30px;
   padding: 25px;
   overflow-x: auto;
