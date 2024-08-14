@@ -19,9 +19,9 @@ function getToday() {
 }
 
 function computeRainRate(precipType, precipProb) {
-  const rainRate = !precipType === 'rain' ? '0%' : `${precipProb}%`;
+  const rainRate = !precipType === 'rain' ? 0 : precipProb;
 
-  return rainRate;
+  return `${Math.round(rainRate)} %`;
 }
 
 function getHourlyData() {
@@ -37,6 +37,7 @@ function getHourlyData() {
       weatherIcon: data.days[0].hours[i].icon,
       hour: formatTime(data.days[0].hours[i].datetime),
     };
+    hour.rainRate = hour.rainRate === '0 %' ? '' : hour.rainRate;
     hours.push(hour);
   }
   return hours;
@@ -56,12 +57,14 @@ function getDailyData() {
       minTemp: data.days[i].tempmin,
       maxTemp: data.days[i].tempmax,
     };
+    day.rainRate = day.rainRate === '0 %' ? '' : day.rainRate;
     days.push(day);
   }
   return days;
 }
 
 function segregateData() {
+  // data is the rawData resolved from json and we segregate it and set to weatherData
   weatherData.todayInfo = {
     currentTemp: data.currentConditions.temp,
     currentCondIcon: data.currentConditions.icon,
