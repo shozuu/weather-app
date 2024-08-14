@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 
+import { weatherData } from './weatherData';
+
 function createElement(elementType, elementClass = [], elementAttribute = {}) {
   const element = document.createElement(elementType);
 
@@ -28,7 +30,7 @@ function appendElement(parentElement, childElement = []) {
   }
 }
 
-function createTodayGroup(weatherData) {
+function createTodayGroup() {
   const mainContainer = document.querySelector('.main-container');
   console.log(weatherData);
   const todayGroup = createElement('section', ['today-group']);
@@ -259,7 +261,7 @@ function createTodayConditionGroup() {
 //   createForecastCardItems();
 // }
 
-export default function setPageFlow(weatherData) {
-  createTodayGroup(weatherData);
+export default function setPageFlow() {
+  createTodayGroup();
   createTodayConditionGroup();
 }
