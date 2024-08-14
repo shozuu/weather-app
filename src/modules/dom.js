@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import initializeImgs from './handleImgs';
 import { weatherData } from './weatherData';
 
 function createElement(elementType, elementClass = [], elementAttribute = {}) {
@@ -41,10 +42,14 @@ function createTodayGroup() {
   const todayTemp = createElement('div', ['today-temp'], {
     textContent: `${weatherData.todayInfo.currentTemp}°C`,
   });
-  const todayWeatherImg = createElement('img', ['today-weather-img'], {
-    src: '',
-    alt: 'partly-cloudy-night',
-  });
+  const todayWeatherImg = createElement(
+    'img',
+    ['today-weather-img', weatherData.todayInfo.currentCondIcon],
+    {
+      src: '',
+      alt: weatherData.todayInfo.currentCondIcon,
+    },
+  );
   const todayCondition = createElement('div', ['today-condition'], {
     textContent: weatherData.todayInfo.currentCond,
   });
@@ -52,19 +57,19 @@ function createTodayGroup() {
   const todayInfoGroup = createElement('div', ['today-info-group']);
 
   const infoGroup1 = createElement('div', ['info-group']);
-  const locationImg = createElement('img', [], { src: '', alt: 'Location' });
+  const locationImg = createElement('img', [], { src: '', alt: 'location' });
   const location = createElement('div', ['location'], {
     textContent: weatherData.todayInfo.currentLocation,
   });
 
   const infoGroup2 = createElement('div', ['info-group']);
-  const timeImg = createElement('img', [], { src: '', alt: 'Time' });
+  const timeImg = createElement('img', [], { src: '', alt: 'time' });
   const currentTime = createElement('div', ['current-time'], {
     textContent: weatherData.todayInfo.currentTime,
   });
 
   const infoGroup3 = createElement('div', ['info-group']);
-  const dateImg = createElement('img', [], { src: '', alt: 'Date' });
+  const dateImg = createElement('img', [], { src: '', alt: 'date' });
   const currentDate = createElement('div', ['current-date'], {
     textContent: weatherData.todayInfo.currentDate,
   });
@@ -240,7 +245,10 @@ function createHourlyForecastCardItems() {
     const hourRainRate = createElement('div', ['hour-rain-rate'], {
       textContent: weatherData.hourlyForecast[i].rainRate,
     });
-    const hourWeatherImg = createElement('img', [], { src: '', alt: '' });
+    const hourWeatherImg = createElement('img', [], {
+      src: '',
+      alt: weatherData.hourlyForecast[i].weatherIcon,
+    });
     const hourTime = createElement('div', ['hour-time'], {
       textContent: weatherData.hourlyForecast[i].hour,
     });
@@ -281,7 +289,7 @@ function createDailyForecastCardItems() {
     });
     const dayWeatherImg = createElement('img', [], {
       src: '',
-      alt: '',
+      alt: weatherData.dailyForecast[i].weatherIcon,
     });
     const tempRange = createElement('div', ['day-temp-range'], {
       textContent: `${weatherData.dailyForecast[i].minTemp}°C - ${weatherData.dailyForecast[i].maxTemp}°C`,
@@ -316,4 +324,5 @@ export default function setPageFlow() {
   createTodayConditionGroup();
   createHourlyGroup();
   createDailyForecastGroup();
+  initializeImgs();
 }
