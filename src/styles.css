@@ -58,6 +58,7 @@ form {
 }
 
 form input {
+  width: 250px;
   font-family: inherit;
   font-size: var(--medium);
   background-color: var(--secondary-color);
@@ -70,6 +71,7 @@ form input {
 }
 
 form button {
+  width: 30px;
   background-color: var(--secondary-color);
   padding: 8px 10px 8px 0px;
   border: 1.5px solid var(--secondary-color);
@@ -113,7 +115,8 @@ form input:focus ~ button {
 }
 
 .celcius-button:hover,
-.farenheit-button:hover {
+.farenheit-button:hover,
+.selected {
   border: 1.5px solid var(--primary-text);
 }
 
@@ -149,6 +152,7 @@ form input:focus ~ button {
 
 .today-temp-group {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   font-size: 64px;
@@ -195,16 +199,21 @@ form input:focus ~ button {
   font-size: var(--small);
 }
 
+.day-card .date {
+  text-wrap: nowrap;
+}
+
 .weather-condition {
   justify-self: center;
   display: flex;
   align-items: center;
   position: relative;
+  margin-left: 35px;
 }
 
 .day-rain-rate {
   position: absolute;
-  right: 30px;
+  right: 25px;
   color: #69aaf5;
   text-wrap: nowrap;
 }
@@ -217,7 +226,7 @@ form input:focus ~ button {
   background-color: var(--secondary-color);
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(24, minmax(60px, 1fr));
+  grid-template-columns: repeat(24, minmax(70px, 1fr));
   gap: 30px;
   padding: 25px;
   overflow-x: auto;
@@ -237,7 +246,7 @@ form input:focus ~ button {
   font-size: var(--small);
   background-color: var(--primary-color);
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px 10px;
 }
 
 .hour-temp {
@@ -283,7 +292,59 @@ form input:focus ~ button {
   font-size: var(--small);
 }
 
-/* should i include css, html, assets folder in the src? */
+.error {
+  margin: auto;
+  text-align: center;
+  color: #d32f2f;
+}
+
+.loader {
+  border: 16px solid #212121;
+  border-radius: 50%;
+  border-top: 16px solid #ececec;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* media queries */
+
+@media only screen and (max-width: 385px) {
+  .today-card {
+    align-items: center;
+  }
+
+  .today-temp-group {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .today-condition {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 @media only screen and (max-width: 509px) {
   .header {
@@ -291,5 +352,11 @@ form input:focus ~ button {
   }
   .unit-group {
     align-self: center;
+  }
+}
+
+@media (min-width: 385px) and (max-width: 964px) {
+  .today-condition-card {
+    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
   }
 }
