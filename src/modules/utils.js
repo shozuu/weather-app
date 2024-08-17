@@ -1,8 +1,16 @@
-/* eslint-disable no-console */
 import { format, parse } from 'date-fns';
 import { weatherData, rawWeatherData as data } from './weatherData';
 import getWeatherData from './api';
 import setPageFlow from './dom';
+
+let location;
+let unitFlag = false; // false for metric, true for us
+
+const retrieveLocation = () => location;
+
+const setLocation = (newLocation) => {
+  location = newLocation;
+};
 
 function formatTime(time) {
   const parsedTime = parse(time, 'HH:mm:ss', new Date());
@@ -21,7 +29,7 @@ function getToday() {
 function computeRainRate(precipType, precipProb) {
   const rainRate = !precipType === 'rain' ? 0 : precipProb;
 
-  return `${Math.round(rainRate)} %`;
+  return `${Math.round(rainRate)}`;
 }
 
 function getHourlyData() {
@@ -37,7 +45,7 @@ function getHourlyData() {
       weatherIcon: data.days[0].hours[i].icon,
       hour: formatTime(data.days[0].hours[i].datetime),
     };
-    hour.rainRate = hour.rainRate === '0 %' ? '' : hour.rainRate;
+    hour.rainRate = hour.rainRate === '0' ? '' : `${hour.rainRate}%`;
     hours.push(hour);
   }
   return hours;
@@ -57,7 +65,7 @@ function getDailyData() {
       minTemp: data.days[i].tempmin,
       maxTemp: data.days[i].tempmax,
     };
-    day.rainRate = day.rainRate === '0 %' ? '' : day.rainRate;
+    day.rainRate = day.rainRate === '0' ? '' : `${day.rainRate}%`;
     days.push(day);
   }
   return days;
@@ -89,14 +97,35 @@ function segregateData() {
   weatherData.hourlyForecast = getHourlyData(data);
   weatherData.dailyForecast = getDailyData(data);
 
-  setPageFlow();
+  setPageFlow(unitFlag);
 }
 
-function setURL(location) {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=RX4CHRHAUCWEF6VASHY8ZA8FT
+function setURL(unit = 'metric') {
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${retrieveLocation()}?unitGroup=${unit}&key=RX4CHRHAUCWEF6VASHY8ZA8FT
   &contentType=json`;
 
   getWeatherData(url, segregateData);
+}
+
+function listenToSwitch() {
+  const metric = document.querySelector('.celcius-button');
+  const us = document.querySelector('.farenheit-button');
+
+  metric.addEventListener('click', () => {
+    metric.classList.add('selected');
+    us.classList.remove('selected');
+
+    unitFlag = false;
+    setURL('metric');
+  });
+
+  us.addEventListener('click', () => {
+    us.classList.add('selected');
+    metric.classList.remove('selected');
+
+    unitFlag = true;
+    setURL('us');
+  });
 }
 
 export {
@@ -108,4 +137,6 @@ export {
   getDailyData,
   segregateData,
   setURL,
+  listenToSwitch,
+  setLocation,
 };
