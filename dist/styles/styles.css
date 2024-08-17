@@ -1,0 +1,362 @@
+:root {
+  --primary-color: #171717;
+  --secondary-color: #212121;
+  --primary-text: #ececec;
+  --secondary-text: #b4b4b4;
+  --small: 12px;
+  --medium: 14px;
+  --large: 18px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  max-width: 1130px;
+  margin: auto;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+form input {
+  width: 250px;
+  font-family: inherit;
+  font-size: var(--medium);
+  background-color: var(--secondary-color);
+  color: var(--secondary-text);
+  padding: 8px 0px 8px 10px;
+  border: 1.5px solid var(--secondary-color);
+  border-right: none;
+  border-radius: 10px 0px 0px 10px;
+  outline: none;
+}
+
+form button {
+  width: 30px;
+  background-color: var(--secondary-color);
+  padding: 8px 10px 8px 0px;
+  border: 1.5px solid var(--secondary-color);
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+}
+
+form button img {
+  width: 18px;
+  height: 18px;
+}
+
+form input:focus {
+  border: 1.5px solid var(--secondary-text);
+  border-right: none;
+}
+
+form input:focus ~ button {
+  border: 1.5px solid var(--secondary-text);
+  border-left: none;
+}
+
+.unit-group {
+  align-self: end;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.celcius-button,
+.farenheit-button {
+  border: 1.5px solid var(--secondary-color);
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  color: var(--primary-text);
+}
+
+.celcius-button:hover,
+.farenheit-button:hover,
+.selected {
+  border: 1.5px solid var(--primary-text);
+}
+
+.main-container {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  gap: 30px;
+  padding: 20px;
+}
+
+.today-group,
+.daily-group,
+.hourly-group,
+.today-condition-group {
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  color: var(--secondary-text);
+  font-size: var(--medium);
+}
+
+.today-card,
+.daily-forecast-card,
+.today-condition-card {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.today-temp-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.today-weather-img {
+  width: 64px;
+  height: 64px;
+}
+
+.today-condition {
+  border-bottom: 1px solid var(--secondary-text);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.today-info-group {
+  display: grid;
+  gap: 10px;
+}
+
+.info-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: var(--medium);
+}
+
+.daily-forecast-card {
+  gap: 10px;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* hides scrollbar for IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.day-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-size: var(--small);
+}
+
+.day-card .date {
+  text-wrap: nowrap;
+}
+
+.weather-condition {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 35px;
+}
+
+.day-rain-rate {
+  position: absolute;
+  right: 25px;
+  color: #69aaf5;
+  text-wrap: nowrap;
+}
+
+.day-temp-range {
+  justify-self: end;
+}
+
+.hourly-forecast-card {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(24, minmax(70px, 1fr));
+  gap: 30px;
+  padding: 25px;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hourly-forecast-card::-webkit-scrollbar,
+.daily-forecast-card::-webkit-scrollbar {
+  display: none; /* chrome and safari */
+}
+
+.hour-card {
+  display: grid;
+  justify-items: center;
+  gap: 40px;
+  font-size: var(--small);
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  padding: 15px 10px;
+}
+
+.hour-temp {
+  font-size: var(--medium);
+}
+
+.hour-info {
+  display: grid;
+  gap: 10px;
+}
+
+.hour-weather {
+  display: grid;
+  justify-items: center;
+  position: relative;
+}
+
+.hour-rain-rate {
+  position: absolute;
+  bottom: 25px;
+  color: #69aaf5;
+  text-wrap: nowrap;
+}
+
+.hour-time {
+  color: var(--secondary-text);
+}
+
+.today-condition-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.condition-card {
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: var(--small);
+}
+
+.error {
+  margin: auto;
+  text-align: center;
+  color: #d32f2f;
+}
+
+.loader {
+  border: 16px solid #212121;
+  border-radius: 50%;
+  border-top: 16px solid #ececec;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* media queries */
+
+@media only screen and (max-width: 385px) {
+  .today-card {
+    align-items: center;
+  }
+
+  .today-temp-group {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .today-condition {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 509px) {
+  .header {
+    justify-content: center;
+  }
+  .unit-group {
+    align-self: center;
+  }
+}
+
+@media (min-width: 385px) and (max-width: 964px) {
+  .today-condition-card {
+    grid-template-columns: repeat(auto-fit, minmax(273px, 1fr));
+  }
+}
