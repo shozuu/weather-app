@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import initializeImgs from './handleImgs';
 import { weatherData } from './weatherData';
 
@@ -31,16 +29,18 @@ function appendElement(parentElement, childElement = []) {
   }
 }
 
+let tempUnit = '';
+let visibilityUnit = '';
+
 function createTodayGroup() {
   const mainContainer = document.querySelector('.main-container');
-  console.log(weatherData);
   const todayGroup = createElement('section', ['today-group']);
-  const title = createElement('div', ['title'], { textContent: 'Today' });
+  const title = createElement('div', ['title'], { textContent: 'Current' });
   const todayCard = createElement('div', ['today-card']);
 
   const todayTempGroup = createElement('div', ['today-temp-group']);
   const todayTemp = createElement('div', ['today-temp'], {
-    textContent: `${weatherData.todayInfo.currentTemp}°C`,
+    textContent: `${weatherData.todayInfo.currentTemp}${tempUnit}`,
   });
   const todayWeatherImg = createElement(
     'img',
@@ -104,7 +104,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo1 = createElement('div', ['condition-info']);
   const feelsLike = createElement('div', ['feels-like'], {
-    textContent: `${weatherData.todayCondition.feelsLike}°C`,
+    textContent: `${weatherData.todayCondition.feelsLike} ${tempUnit}`,
   });
   const temp1 = createElement('div', [], {
     textContent: 'Feels Like',
@@ -117,7 +117,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo2 = createElement('div', ['condition-info']);
   const rainRate = createElement('div', ['rain-rate'], {
-    textContent: weatherData.todayCondition.rainRate,
+    textContent: `${weatherData.todayCondition.rainRate} %`,
   });
   const temp2 = createElement('div', [], { textContent: 'Rain Rate' });
 
@@ -154,7 +154,7 @@ function createTodayConditionGroup() {
   });
   const conditionInfo5 = createElement('div', ['condition-info']);
   const visibility = createElement('div', ['visibility'], {
-    textContent: `${weatherData.todayCondition.visibility} km`,
+    textContent: `${weatherData.todayCondition.visibility} ${visibilityUnit}`,
   });
   const temp5 = createElement('div', [], {
     textContent: 'Visibility',
@@ -238,7 +238,7 @@ function createHourlyForecastCardItems() {
   for (let i = 0; i < weatherData.hourlyForecast.length; i += 1) {
     const hourCard = createElement('div', ['hour-card']);
     const hourTemp = createElement('div', ['hour-temp'], {
-      textContent: weatherData.hourlyForecast[i].temp,
+      textContent: `${weatherData.hourlyForecast[i].temp}°`,
     });
     const hourInfo = createElement('div', ['hour-info']);
     const hourWeather = createElement('div', ['hour-weather']);
@@ -292,7 +292,7 @@ function createDailyForecastCardItems() {
       alt: weatherData.dailyForecast[i].weatherIcon,
     });
     const tempRange = createElement('div', ['day-temp-range'], {
-      textContent: `${weatherData.dailyForecast[i].minTemp}°C - ${weatherData.dailyForecast[i].maxTemp}°C`,
+      textContent: `${weatherData.dailyForecast[i].minTemp}°-${weatherData.dailyForecast[i].maxTemp}°`,
     });
 
     appendElement(weatherCondition, [dayRainRate, dayWeatherImg]);
@@ -316,9 +316,18 @@ function createDailyForecastGroup() {
   appendElement(mainContainer, [dailyGroup]);
 }
 
-export default function setPageFlow() {
+export default function setPageFlow(unitFlag) {
   const mainContainer = document.querySelector('.main-container');
   mainContainer.innerHTML = '';
+
+  // metric = false, us = true
+  if (unitFlag) {
+    tempUnit = '°F';
+    visibilityUnit = 'mi';
+  } else {
+    tempUnit = '°C';
+    visibilityUnit = 'km';
+  }
 
   createTodayGroup();
   createTodayConditionGroup();
@@ -326,3 +335,21 @@ export default function setPageFlow() {
   createDailyForecastGroup();
   initializeImgs();
 }
+
+function createLoadingScreen() {
+  const mainContainer = document.querySelector('.main-container');
+  mainContainer.innerHTML = '';
+
+  const loader = createElement('div', ['loader']);
+  appendElement(mainContainer, [loader]);
+}
+
+function createErrorScreen(error) {
+  const mainContainer = document.querySelector('.main-container');
+  mainContainer.innerHTML = '';
+
+  const errElement = createElement('h3', ['error'], { textContent: error });
+  appendElement(mainContainer, [errElement]);
+}
+
+export { createLoadingScreen, createErrorScreen };
