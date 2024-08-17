@@ -1,9 +1,9 @@
-/* eslint-disable no-console */
-import { setURL } from './utils';
+import { listenToSwitch, setLocation, setURL } from './utils';
 
 export default function getLocation() {
   const form = document.querySelector('form');
   const searchbar = document.querySelector('.searchbar');
+  let location = 'tokyo%20japan';
   let flag = false;
 
   form.addEventListener('submit', (e) => {
@@ -11,12 +11,15 @@ export default function getLocation() {
     e.preventDefault();
 
     const arr = searchbar.value.split(' ');
-    const location = arr.join('%20');
+    location = arr.join('%20');
 
-    setURL(location);
+    setLocation(location);
+    setURL();
   });
 
-  if (!flag) setURL('tokyo japan');
+  if (!flag) {
+    listenToSwitch();
+    setLocation(location);
+    setURL();
+  }
 }
-
-// implement geocoding?
