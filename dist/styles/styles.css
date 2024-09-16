@@ -59,6 +59,7 @@ form {
 
 form input {
   width: 250px;
+  height: 39px;
   font-family: inherit;
   font-size: var(--medium);
   background-color: var(--secondary-color);
@@ -72,6 +73,7 @@ form input {
 
 form button {
   width: 30px;
+  height: 39px;
   background-color: var(--secondary-color);
   padding: 8px 10px 8px 0px;
   border: 1.5px solid var(--secondary-color);

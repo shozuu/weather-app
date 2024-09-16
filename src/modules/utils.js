@@ -101,8 +101,7 @@ function segregateData() {
 }
 
 function setURL(unit = 'metric') {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${retrieveLocation()}?unitGroup=${unit}&key=RX4CHRHAUCWEF6VASHY8ZA8FT
-  &contentType=json`;
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${retrieveLocation()}?unitGroup=${unit}&key=RX4CHRHAUCWEF6VASHY8ZA8FT&contentType=json`;
 
   getWeatherData(url, segregateData);
 }
